@@ -1,0 +1,80 @@
+# .gitignore — TrustVault
+
+# ─── Python ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ─── Environment files (NEVER commit real secrets) ────────────────────
+.env
+!.env.example
+*.env.local
+
+# ─── Database files ───────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ─── Uploaded documents (private storage) ─────────────────────────────
+storage/documents/*
+!storage/documents/.gitkeep
+
+# ─── Node / Frontend ──────────────────────────────────────────────────
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.tsbuildinfo
+
+# ─── Test artifacts ───────────────────────────────────────────────────
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+backend/tests/*.db
+
+# ─── IDE / OS ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ─── Logs ─────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Alembic (keep versions, ignore compiled) ─────────────────────────
+backend/alembic/versions/__pycache__/
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Frontend dependencies and builds
+node_modules/
+dist/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Uploaded documents and local storage
+storage/
