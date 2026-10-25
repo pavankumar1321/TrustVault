@@ -32,15 +32,10 @@ export async function apiClient(endpoint, options = {}) {
       credentials: 'include', // essential for HTTP-only session cookies
     });
   } catch (netErr) {
-    // Network error — backend is not reachable at all
     const err = new Error(
-      'Backend server is not running. Please start it:\n\n' +
-      '  Option 1: Double-click run_trustvault.bat\n' +
-      '  Option 2: Open a terminal and run:\n' +
-      '            python run_backend.py\n\n' +
-      'Then refresh this page.'
+      'Unable to connect to TrustVault server. Please verify the backend service is running.'
     );
-    err.code = 'BACKEND_OFFLINE';
+    err.code = 'NETWORK_ERROR';
     throw err;
   }
 
@@ -53,10 +48,9 @@ export async function apiClient(endpoint, options = {}) {
     } catch { /* ignore */ }
 
     const err = new Error(
-      proxyMsg ||
-      'Backend server is offline (503). Start it with: python run_backend.py'
+      proxyMsg || 'TrustVault service is temporarily unavailable. Please verify the backend server is running.'
     );
-    err.code = 'BACKEND_OFFLINE';
+    err.code = 'SERVICE_UNAVAILABLE';
     err.status = 503;
     throw err;
   }
@@ -73,11 +67,7 @@ export async function apiClient(endpoint, options = {}) {
       try {
         const rawText = await response.text();
         if (rawText && rawText.length < 300) {
-          if (rawText.includes('ECONNREFUSED') || rawText.includes('BACKEND_NOT_RUNNING')) {
-            errorMsg = 'Backend server is not running on port 8000. Start it with: python run_backend.py';
-          } else {
-            errorMsg = rawText;
-          }
+          errorMsg = rawText;
         }
       } catch { /* ignore */ }
     }

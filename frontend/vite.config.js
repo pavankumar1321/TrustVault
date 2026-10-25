@@ -20,7 +20,7 @@ export default defineConfig({
               res.end(JSON.stringify({
                 success: false,
                 error: {
-                  message: 'TrustVault backend server is not running on port 8000. Please start it with: python run_backend.py (or run_trustvault.bat)',
+                  message: 'TrustVault backend service is not reachable. Please ensure the backend server is running.',
                   code: 'BACKEND_NOT_RUNNING'
                 }
               }));

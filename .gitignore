@@ -56,25 +56,3 @@ logs/
 
 # ─── Alembic (keep versions, ignore compiled) ─────────────────────────
 backend/alembic/versions/__pycache__/
-# Environment variables and secrets
-.env
-.env.*
-!.env.example
-
-# Python
-.venv/
-__pycache__/
-*.py[cod]
-.pytest_cache/
-
-# Frontend dependencies and builds
-node_modules/
-dist/
-
-# Local databases
-*.db
-*.sqlite
-*.sqlite3
-
-# Uploaded documents and local storage
-storage/

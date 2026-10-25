@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 import LoadingSpinner from './components/common/LoadingSpinner';
-import BackendStatusBanner from './components/common/BackendStatusBanner';
 
 // Auth pages
 import LoginPage from './pages/auth/LoginPage';
@@ -45,7 +44,6 @@ function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <BackendStatusBanner />
         <Routes>
           {/* Root — smart redirect based on role */}
           <Route path="/" element={<RootRedirect />} />
